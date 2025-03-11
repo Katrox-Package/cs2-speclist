@@ -1,7 +1,6 @@
 {
-  "SpecList_Enabled": "Spectator list {green}enabled.",
-  "SpecList_Disabled": "Spectator list {red}disabled.",
+  "SpecList_Enabled": "İzleyici listesi {green}açıldı.",
+  "SpecList_Disabled": "İzleyici listesi {red}kapatıldı.",
 
-  "SpectatorListHeader": "Players watching you:"
+  "SpectatorListHeader": "Sizi izleyen oyuncular :"
 }
-

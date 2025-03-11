@@ -1,3 +1,6 @@
 {
+  "SpecList_Enabled": "Spectator list {green}enabled.",
+  "SpecList_Disabled": "Spectator list {red}disabled.",
 
+  "SpectatorListHeader": "Players watching you:"
 }

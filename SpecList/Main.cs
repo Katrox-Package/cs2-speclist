@@ -52,19 +52,22 @@ namespace SpecList
                 if (x == null || !x.IsValid)
                     return;
 
-                if (AllowSpecList.Contains(x.SteamID))
+                if (x.GetSpectators() is { } spectators)
                 {
-                    if (x.GetSpectators() is { } spectators)
+                    if (spectators.Count <= 0) return;
+                    var spectatorNames = string.Join("\n", spectators.Select(x => x.PlayerName));
+                    foreach (var spec in spectators)
                     {
-                        if (spectators.Count <= 0) return;
-                        var spectatorNames = string.Join("\n", spectators.Select(x => x.PlayerName));
-                        var localizedText = Localizer["SpectatorListHeader"] + "\n" + spectatorNames;
-                        foreach (var spec in spectators)
+                        if (AllowSpecList.Contains(spec.SteamID))
                         {
-                            spec.PrintToCenterHtml(localizedText);
+                            var loc = Localizer.ForPlayer(spec, "SpectatorListHeader") + "\n" + spectatorNames;
+                            spec.PrintToCenterHtml(loc);
                         }
-
-                        x.PrintToCenterHtml(localizedText);
+                    }
+                    if (AllowSpecList.Contains(x.SteamID))
+                    {
+                        var locT = Localizer.ForPlayer(x, "SpectatorListHeader") + "\n" + spectatorNames;
+                        x.PrintToCenterHtml(locT);
                     }
                 }
             });
